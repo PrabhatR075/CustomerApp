@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Customer List</title>
+</head>
+<body>
+<a href="/customer/add">Add New Customer</a>
+<h2>Customer List</h2>
+<hr>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  <tr th:each="customer : ${customers}">
+    <td th:text="${customer.id}"></td>
+    <td th:text="${customer.firstName}"></td>
+    <td th:text="${customer.lastName}"></td>
+    <td th:text="${customer.email}"></td>
+    <td>
+      <a th:href="@{/customer/edit/{id}(id=${customer.id})}">Edit</a>
+      <a th:href="@{/customer/delete/{id}(id=${customer.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
